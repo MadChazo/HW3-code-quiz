@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  font-family: sans-serif;
+}
+
+header h2,
+h3 {
+  font-size: 16px;
+  margin: 20px;
+}
+
+h1 {
+  font-family: sans-serif;
+}
+
+.intro {
+  text-align: center;
+}
+
+.question {
+  display: none;
+  width: 50%;
+  margin: 0 25%;
+}
+
+#end-screen {
+  display: none;
+}
+
+.question ol {
+  list-style: lower-alpha;
+}
+
+#highscore-screen {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .question {
+    width: 75%;
+    margin: 0 12.5%;
+  }
+}

@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Code Quiz</title>
-    <link rel="stylesheet" href="assets/css/style.css"/>
-</head>
-<body>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h2>View Highscores</h2>
+      <h3 id="timer">Time Remaining: <span id="time"></span></h3>
+    </header>
+    <section class="intro">
+      <h1>Coding Quiz</h1>
+      <p>Answer these questions in one minute. Try to get a highscore!</p>
+      <button id="start">Start</button>
+    </section>
+    <section class="question">
+      <p>Question 1</p>
+      <ol class="answers">
+        <li>Answer 1</li>
+        <li class="correct">Answer 2</li>
+        <li>Answer 3</li>
+        <li>Answer 4</li>
+      </ol>
+    </section>
+    <section class="question">
+      <p>Question 2</p>
+      <ol class="answers">
+        <li>Answer 1</li>
+        <li>Answer 2</li>
+        <li>Answer 3</li>
+        <li class="correct">Answer 4</li>
+      </ol>
+    </section>
+    <section id="end-screen">
+      <h1>Quiz Complete!</h1>
+      <p>Your final score is: <span id="final-score"></span></p>
+      <label for="initials">Enter your initials here:</label><br />
+      <input type="text" id="initials" name="initials" value="" />
+      <input type="submit" value="Submit" id="submit" />
+    </section>
+    <section id="last-answer"></section>
+    <section id="highscore-screen">
+      <h1>Highscores</h1>
+      <ol id="highscores"></ol>
+      <button id="home">Home</button>
+      <button id="clear">Clear Highscores</button>
+    </section>
     <script src="assets/js/script.js"></script>
-</body>
+  </body>
 </html>
