@@ -13,7 +13,10 @@
     </header>
     <section class="intro">
       <h1>Coding Quiz</h1>
-      <p>Answer these questions in one minute. Try to get a highscore!</p>
+      <p>
+        Answer these coding questions in one minute.<br />Incorrect answers take
+        five seconds off the clock.
+      </p>
       <button id="start">Start</button>
     </section>
     <section class="question">
@@ -34,11 +37,20 @@
         <li class="correct">Answer 4</li>
       </ol>
     </section>
+    <section class="question">
+      <p>Question 3</p>
+      <ol class="answers">
+        <li class="correct">Answer 1</li>
+        <li>Answer 2</li>
+        <li>Answer 3</li>
+        <li>Answer 4</li>
+      </ol>
+    </section>
     <section id="end-screen">
       <h1>Quiz Complete!</h1>
       <p>Your final score is: <span id="final-score"></span></p>
       <label for="initials">Enter your initials here:</label><br />
-      <input type="text" id="initials" name="initials" value="" />
+      <input type="text" id="initials" name="initials" maxlength="3" value="XYZ" />
       <input type="submit" value="Submit" id="submit" />
     </section>
     <section id="last-answer"></section>

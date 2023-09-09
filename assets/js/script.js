@@ -17,11 +17,12 @@ var currentQ = 0;
 var score = 0;
 var timeLeft = 60;
 
+// writes time to site
 function writeTime() {
   timeSpan.textContent = timeLeft;
 }
 
-//
+//Starts timer; controls when timer stops
 function timer() {
   var timer = setInterval(function () {
     timeLeft--;
@@ -39,7 +40,8 @@ function timer() {
   }, 1000);
 }
 
-// Should reset quiz to default, but sometimes score is kept, and only lets you answer one question before ending quiz
+// ISSUE - Should reset quiz to default, but sometimes score is kept, and skips questions
+// Resets quiz to default to be started again
 function resetQuiz() {
   hsScreen.setAttribute("style", "display: none");
   score = 0;
@@ -49,9 +51,11 @@ function resetQuiz() {
   introScreen.setAttribute("style", "display: block");
 }
 
+// Controls addition of scores to highscore screen; displaying highscore screen/hiding end screen
 function highscore() {
   var inits = document.getElementById("initials").value;
   var newScore = document.createElement("li");
+  // ISSUE - this is an attempt at using local storage, which we haven't learned yet - do I need local storage, or can I just rely on the memory that's built in for this?
   //   if (localStorage.getItem("scoreList") != null) {
   //     hsList = JSON.parse(localStorage.getItem("scoreList"));
   //   }
@@ -63,13 +67,14 @@ function highscore() {
   hsScreen.setAttribute("style", "display: block");
 }
 
+// Displays end screen/hides last question
 function endQuiz() {
   questions[currentQ].setAttribute("style", "display: none");
   endScreen.setAttribute("style", "display: block");
   finalScore.textContent = score;
-  submitBtn.addEventListener("click", highscore);
 }
 
+// Decides what to do after an answer is selected - displays correct or incorrect marker on next question, calls setup of next question, ends quiz if last question, increments score if correct, decrements time if incorrect
 function nextQ(ans) {
   if (currentQ == questions.length - 1) {
     if (ans.classList.contains("correct")) {
@@ -97,10 +102,11 @@ function nextQ(ans) {
   }
 }
 
+// Displays current question, makes all answers clickable
 function setupQ(q) {
   var answers = questions[q].getElementsByTagName("li");
   questions[q].setAttribute("style", "display: block");
-  // Is this a bad idea?
+  // ISSUE - is the for loop a bad idea?
   for (let i = 0; i < answers.length; i++) {
     answers[i].addEventListener("click", function () {
       nextQ(answers[i]);
@@ -108,6 +114,7 @@ function setupQ(q) {
   }
 }
 
+// Hides intro screen, calls timer, displays first question, calls setup of first question
 function startQuiz() {
   timer();
   introScreen.setAttribute("style", "display: none");
@@ -116,11 +123,17 @@ function startQuiz() {
 }
 
 writeTime();
-startBtn.addEventListener("click", startQuiz);
+// Event listener buttons
 viewHS.addEventListener("click", function () {
   questions[currentQ].setAttribute("style", "display: none");
   introScreen.setAttribute("style", "display: none");
   endScreen.setAttribute("style", "display: none");
   hsScreen.setAttribute("style", "display: block");
+  lastAnswer.setAttribute("style", "display: none");
 });
 homeBtn.addEventListener("click", resetQuiz);
+submitBtn.addEventListener("click", highscore);
+startBtn.addEventListener("click", startQuiz);
+clearBtn.addEventListener("click", function () {
+  hsList.innerHTML = "";
+});

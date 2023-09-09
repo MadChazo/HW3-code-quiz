@@ -14,12 +14,41 @@ h3 {
   margin: 20px;
 }
 
+body {
+  background-color: #262524;
+  color: white;
+}
+
 h1 {
   font-family: sans-serif;
+  font-size: 30px;
+}
+
+button,
+#submit {
+  background-color: purple;
+  color: white;
+  font-size: 18px;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+button:hover,
+#submit:hover,
+.answers li:hover {
+  background-color: #b100b1;
+  cursor: pointer;
 }
 
 .intro {
   text-align: center;
+}
+
+.intro p {
+  margin: 20px 30px 30px 30px;
+  font-size: 16px;
 }
 
 .question {
@@ -27,17 +56,42 @@ h1 {
   width: 50%;
   margin: 0 25%;
 }
+.question p {
+  font-size: 20px;
+}
+
+.answers {
+  list-style: lower-alpha;
+}
+
+.answers li {
+  background-color: purple;
+  list-style-position: inside;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
 
 #end-screen {
   display: none;
+  text-align: center;
 }
 
-.question ol {
-  list-style: lower-alpha;
+#last-answer {
+  display: none;
+  width: 50%;
+  margin: 0 25%;
+  border-top: white solid 1px;
+  padding: 20px;
 }
 
 #highscore-screen {
   display: none;
+  text-align: center;
+}
+
+#highscores {
+  list-style-position: inside;
 }
 
 @media screen and (max-width: 768px) {
