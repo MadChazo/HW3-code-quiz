@@ -8,9 +8,10 @@
   </head>
   <body>
     <header>
-      <h2>View Highscores</h2>
+      <h2>View Scores</h2>
       <h3 id="timer">Time Remaining: <span id="time"></span></h3>
     </header>
+    <!-- Intro screen -->
     <section class="intro">
       <h1>Coding Quiz</h1>
       <p>
@@ -19,46 +20,131 @@
       </p>
       <button id="start">Start</button>
     </section>
+    <!-- Questions -->
     <section class="question">
-      <p>Question 1</p>
+      <p>
+        What notation is used to signify an item at a certain index within an
+        array in JavaScript?
+      </p>
       <ol class="answers">
-        <li>Answer 1</li>
-        <li class="correct">Answer 2</li>
-        <li>Answer 3</li>
-        <li>Answer 4</li>
+        <li>array(index)</li>
+        <li class="correct">array[index]</li>
+        <li>array{index}</li>
+        <li>array.index</li>
       </ol>
     </section>
     <section class="question">
-      <p>Question 2</p>
+      <p>
+        Which depicts the correct initialization of a for loop in JavaScript?
+      </p>
       <ol class="answers">
-        <li>Answer 1</li>
-        <li>Answer 2</li>
-        <li>Answer 3</li>
-        <li class="correct">Answer 4</li>
+        <li>for (let i = 0 || i < array.length || i++) {}</li>
+        <li>for (let i = 0, i < array.length, i++) {}</li>
+        <li class="correct">for (let i = 0; i < array.length; i++) {}</li>
+        <li>for (let i = 0; i++; i < array.length) {}</li>
       </ol>
     </section>
     <section class="question">
-      <p>Question 3</p>
+      <p>In CSS, which is the correct notation for a class selector?</p>
       <ol class="answers">
-        <li class="correct">Answer 1</li>
-        <li>Answer 2</li>
-        <li>Answer 3</li>
-        <li>Answer 4</li>
+        <li class="correct">.class</li>
+        <li>#class</li>
+        <li>-class</li>
+        <li>@class</li>
       </ol>
     </section>
+    <section class="question">
+      <p>
+        Semicolons at the end of statements are required for code to function in
+        which language?
+      </p>
+      <ol class="answers">
+        <li>JavaScript</li>
+        <li>HTML</li>
+        <li>Python</li>
+        <li class="correct">CSS</li>
+      </ol>
+    </section>
+    <section class="question">
+      <p>
+        Which CSS value of the display property would cause only one item to be
+        displayed on a line at a time?
+      </p>
+      <ol class="answers">
+        <li class="correct">block</li>
+        <li>none</li>
+        <li>flex</li>
+        <li>inline</li>
+      </ol>
+    </section>
+    <section class="question">
+      <p>
+        How many different types of header tags (h1, h2, etc.) does HTML have by
+        default?
+      </p>
+      <ol class="answers">
+        <li>5</li>
+        <li class="correct">6</li>
+        <li>10</li>
+        <li>12</li>
+      </ol>
+    </section>
+    <section class="question">
+      <p>Which of the following statements would return true in JavaScript?</p>
+      <ol class="answers">
+        <li>4 = 4</li>
+        <li>"4" === 4</li>
+        <li>4 !== 4</li>
+        <li class="correct">"4" == 4</li>
+      </ol>
+    </section>
+    <section class="question">
+      <p>
+        Which of the following should not be included in the head portion of an
+        HTML document?
+      </p>
+      <ol class="answers">
+        <li>Link to CSS stylesheet</li>
+        <li>Webpage title</li>
+        <li class="correct">Link to JavaScript file</li>
+        <li>Character set</li>
+      </ol>
+    </section>
+    <section class="question">
+      <p>Which of the following JavaScript methods will not return an array?</p>
+      <ol class="answers">
+        <li>document.querySelectorAll</li>
+        <li>document.getElementsByClassName</li>
+        <li class="correct">document.getElementById</li>
+        <li>document.getElementsByTagName</li>
+      </ol>
+    </section>
+    <section class="question">
+      <p>Which of the following is the correct comment notation for CSS?</p>
+      <ol class="answers">
+        <li>// Comment</li>
+        <li class="correct">/* Comment */</li>
+        <li>< Comment /></li>
+        <li><-- Comment --></li>
+      </ol>
+    </section>
+    <!-- End screen -->
     <section id="end-screen">
       <h1>Quiz Complete!</h1>
       <p>Your final score is: <span id="final-score"></span></p>
-      <label for="initials">Enter your initials here:</label><br />
+      <label for="initials">Enter your initials here to save your score.</label
+      ><br />
       <input type="text" id="initials" name="initials" maxlength="3" value="" />
       <input type="submit" value="Submit" id="submit" />
     </section>
+    <!-- Last answer feedback -->
     <section id="last-answer"></section>
+    <!-- Scores screen -->
     <section id="highscore-screen">
-      <h1>Highscores</h1>
+      <h1>Recent Scores</h1>
       <ol id="highscores"></ol>
       <button id="home">Home</button>
-      <button id="clear">Clear Highscores</button>
+      <button id="clear">Clear Scores</button>
     </section>
     <script src="assets/js/script.js"></script>
   </body>

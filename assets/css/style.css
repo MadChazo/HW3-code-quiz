@@ -24,6 +24,7 @@ h1 {
   font-size: 30px;
 }
 
+/* Button formatting */
 button,
 #submit {
   background-color: purple;
@@ -94,6 +95,7 @@ button:hover,
   list-style-position: inside;
 }
 
+/* Media query for smaller screen sizes */
 @media screen and (max-width: 768px) {
   .question {
     width: 75%;

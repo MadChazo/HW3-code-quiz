@@ -94,6 +94,7 @@ function nextQ(ans) {
     currentQ++;
     setupQ(currentQ);
   } else {
+    lastAnswer.setAttribute("style", "display: block");
     lastAnswer.textContent = "Incorrect";
     timeLeft -= 5;
     writeTime();
