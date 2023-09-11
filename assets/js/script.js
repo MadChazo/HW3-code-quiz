@@ -16,6 +16,8 @@ var viewHS = document.getElementsByTagName("h2")[0];
 var currentQ = 0;
 var score = 0;
 var timeLeft = 60;
+// Highscore storage
+var scoreList = JSON.parse(localStorage.getItem("scoreList")) || [];
 
 // writes time to site
 function writeTime() {
@@ -40,28 +42,27 @@ function timer() {
   }, 1000);
 }
 
-// ISSUE - Should reset quiz to default, but sometimes score is kept, and skips questions
-// Resets quiz to default to be started again
+// Resets quiz by reloading page
 function resetQuiz() {
-  hsScreen.setAttribute("style", "display: none");
-  score = 0;
-  currentQ = 0;
-  timeLeft = 60;
-  writeTime();
-  introScreen.setAttribute("style", "display: block");
+  location.reload();
 }
 
-// Controls addition of scores to highscore screen; displaying highscore screen/hiding end screen
+// Controls addition of scores to highscore screen, storing scores; displaying highscore screen/hiding end screen
 function highscore() {
-  var inits = document.getElementById("initials").value;
-  var newScore = document.createElement("li");
-  // ISSUE - this is an attempt at using local storage, which we haven't learned yet - do I need local storage, or can I just rely on the memory that's built in for this?
-  //   if (localStorage.getItem("scoreList") != null) {
-  //     hsList = JSON.parse(localStorage.getItem("scoreList"));
-  //   }
-  newScore.textContent = inits + " - " + score;
-  hsList.appendChild(newScore);
-  //   localStorage.setItem("scoreList", JSON.stringify(hsList));
+  if (document.getElementById("initials").value != "") {
+    var inits = document.getElementById("initials").value;
+    var storeScore = {
+      name: inits,
+      score: score,
+    };
+    scoreList.push(storeScore);
+  }
+  for (let i = 0; i < scoreList.length; i++) {
+    var newScore = document.createElement("li");
+    newScore.textContent = scoreList[i].name + " - " + scoreList[i].score;
+    hsList.appendChild(newScore);
+  }
+  localStorage.setItem("scoreList", JSON.stringify(scoreList));
   endScreen.setAttribute("style", "display: none");
   lastAnswer.setAttribute("style", "display: none");
   hsScreen.setAttribute("style", "display: block");
@@ -106,7 +107,6 @@ function nextQ(ans) {
 function setupQ(q) {
   var answers = questions[q].getElementsByTagName("li");
   questions[q].setAttribute("style", "display: block");
-  // ISSUE - is the for loop a bad idea?
   for (let i = 0; i < answers.length; i++) {
     answers[i].addEventListener("click", function () {
       nextQ(answers[i]);
@@ -130,10 +130,20 @@ viewHS.addEventListener("click", function () {
   endScreen.setAttribute("style", "display: none");
   hsScreen.setAttribute("style", "display: block");
   lastAnswer.setAttribute("style", "display: none");
+  if (hsList.innerHTML == "") {
+    highscore();
+  }
 });
 homeBtn.addEventListener("click", resetQuiz);
-submitBtn.addEventListener("click", highscore);
+submitBtn.addEventListener("click", function () {
+  if (document.getElementById("initials").value === "") {
+    return;
+  } else {
+    highscore();
+  }
+});
 startBtn.addEventListener("click", startQuiz);
 clearBtn.addEventListener("click", function () {
   hsList.innerHTML = "";
+  localStorage.clear();
 });
